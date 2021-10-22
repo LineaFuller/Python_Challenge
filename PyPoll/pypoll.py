@@ -11,18 +11,31 @@ with open(election_data_csv, 'r') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
 
     print("Election Results")
-    print("----------------")
+    print("-------------------")
 
 # Declare variables 
     header = next(csv_reader)
-    row_count= 0
+    total_vote_count= 0
+# Candidate option and vote counters
+    candidates_options = []
+    candidate_votes = {}
 
-
+# Winning Candidate and Winning Count Tracker
+    winning_candidate = ""
+    winning_count = 0
+# 
     for row in csv_reader:
-            row_count = row_count + 1      
+        total_vote_count = total_vote_count + 1
+        candidate_name = row[2]
+        
+       
 
 
 
 
 
-print(f"Total Votes: {row_count}")
+
+    print(f"Total Votes: {total_vote_count}")
+# Formatting spacer 
+print("-------------------")
+print(f"{candidate_name}")
