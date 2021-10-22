@@ -52,10 +52,13 @@ with open (budget_csv, 'r') as csv_file:
     print(f"Greatest decrease in change: ${allmonths[min_change_month]} ${min_change_value}")
 
 
-# Print Results to Pybank.py 
-pybank_file = open("pybank_file.text", "w")
-pybank_file.write(f"Total Months: {total_months}")
-pybank_file.write(f"Total Net Amount: ${total_net_amount}")
-pybank_file.write(f"Average Change: ${sum(changed_per_month)/len(changed_per_month)}")
-pybank_file.write(f"Greatest increase in change: ${allmonths[max_change_month]} ${max_change_value}")
-pybank_file.write(f"Greatest decrease in change: ${allmonths[min_change_month]} ${min_change_value}")
+# Print Results to Analysis File
+with open("Analysis.txt", "w") as analysis_file:
+    analysis_file.write("Financial Analysis" + '\n')
+    analysis_file.write("----------------------------" + '\n')
+    analysis_file.write(f"Total Months: {total_months}")
+    analysis_file.write(f"Total Net Amount: ${total_net_amount}" + '\n')
+    analysis_file.write(f"Average Change: ${sum(changed_per_month)/len(changed_per_month)}" + '\n')
+    analysis_file.write(f"Greatest increase in change: ${allmonths[max_change_month]} ${max_change_value}" + '\n')
+    analysis_file.write(f"Greatest decrease in change: ${allmonths[min_change_month]} ${min_change_value}" + '\n')
+    analysis_file.close
