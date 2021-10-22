@@ -8,7 +8,7 @@ budget_csv = os.path.join("Resources", "budget_data.csv")
 with open (budget_csv, 'r') as csv_file: 
     csv_reader = csv.reader(csv_file, delimiter = ",")
     
-    # Title = input("Financial Analysis")
+    # Format print
     print("Financial Analysis")
     print("----------------------------")
 
