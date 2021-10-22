@@ -42,23 +42,23 @@ with open (budget_csv, 'r') as csv_file:
     max_change_month = changed_per_month.index(max(changed_per_month)) 
     min_change_month = changed_per_month.index(min(changed_per_month)) 
 
-        
     
-# Output values
-    print(f"Total Months: {total_months}")
-    print(f"Total Net Amount: ${total_net_amount}")
-    print(f"Average Change: ${sum(changed_per_month)/len(changed_per_month)}")
-    print(f"Greatest increase in change: ${allmonths[max_change_month]} ${max_change_value}")
-    print(f"Greatest decrease in change: ${allmonths[min_change_month]} ${min_change_value}")
 
+# Print Results to Analysis tab
+file_to_save = os.path.join("Analysis", "analysis.txt")
+output = (
+    f"Financial Analysis" + '\n'
+    f"----------------------------" + '\n'
+    f"Total Months: {total_months}"
+    f"Total Net Amount: ${total_net_amount}" + '\n'
+    f"Average Change: ${sum(changed_per_month)/len(changed_per_month)}" + '\n'
+    f"Greatest increase in change: ${allmonths[max_change_month]} ${max_change_value}" + '\n'
+    f"Greatest decrease in change: ${allmonths[min_change_month]} ${min_change_value}" + '\n'
+)
+# print output to terminal
+print(output)
 
-# Print Results to Analysis File
-with open("Analysis.txt", "w") as analysis_file:
-    analysis_file.write("Financial Analysis" + '\n')
-    analysis_file.write("----------------------------" + '\n')
-    analysis_file.write(f"Total Months: {total_months}")
-    analysis_file.write(f"Total Net Amount: ${total_net_amount}" + '\n')
-    analysis_file.write(f"Average Change: ${sum(changed_per_month)/len(changed_per_month)}" + '\n')
-    analysis_file.write(f"Greatest increase in change: ${allmonths[max_change_month]} ${max_change_value}" + '\n')
-    analysis_file.write(f"Greatest decrease in change: ${allmonths[min_change_month]} ${min_change_value}" + '\n')
-    analysis_file.close
+# export the results to text file
+with open(file_to_save, "w") as analysis_txt:
+    analysis_txt.write(output)
+    
