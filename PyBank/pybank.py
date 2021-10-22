@@ -24,12 +24,14 @@ with open (budget_csv, 'r') as csv_file:
     previous_month = 0
     allmonths = []
 
-# open the csv file
+# Loop through to find totals 
     for row in csv_reader:
         
-    
+    # Calculate total months
         total_months = total_months + 1
+    # Calculate total price amount
         total_net_amount = total_net_amount + int(row[1])
+    # The average change in revenue between each month in the dataset 
         if row[0]!= 'Jan-2010':
             change = int(row[1]) - previous_month
             changed_per_month.append(change) 
@@ -38,7 +40,7 @@ with open (budget_csv, 'r') as csv_file:
         else: 
             previous_month = int(row[1]) 
 
-
+# The date and value of greatest increase and decrease in revenue  
     max_change_value = max(changed_per_month)
     min_change_value = min(changed_per_month)
     max_change_month = changed_per_month.index(max(changed_per_month)) 
@@ -46,7 +48,7 @@ with open (budget_csv, 'r') as csv_file:
 
         
     
-
+# Output values
     print(f"Total Months: {total_months}")
     print(f"Total Net Amount: ${total_net_amount}")
     print(f"Average Change: ${sum(changed_per_month)/len(changed_per_month)}")
