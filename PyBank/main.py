@@ -1,10 +1,11 @@
 import os 
 import csv 
 
+# Path to collect data from resources folder
 budget_csv = os.path.join("Resources", "budget_data.csv")
 
 
-# read in the csv file
+# Read in the csv file
 with open (budget_csv, 'r') as csv_file: 
     csv_reader = csv.reader(csv_file, delimiter = ",")
     
@@ -55,10 +56,10 @@ output = (
     f"Greatest increase in change: ${allmonths[max_change_month]} ${max_change_value}" + '\n'
     f"Greatest decrease in change: ${allmonths[min_change_month]} ${min_change_value}" + '\n'
 )
-# print output to terminal
+# Print output to terminal
 print(output)
 
-# export the results to text file
+# Export the results to text file
 with open(file_to_save, "w") as analysis_txt:
     analysis_txt.write(output)
     
